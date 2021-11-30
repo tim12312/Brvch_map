@@ -397,6 +397,12 @@
                  "id":58,
                  "name":"colseDoor",
                  "opacity":1,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "type":"tilelayer",
                  "visible":true,
                  "width":55,
@@ -405,12 +411,6 @@
                 }],
          "name":"door",
          "opacity":1,
-         "properties":[
-                {
-                 "name":"collides",
-                 "type":"bool",
-                 "value":true
-                }],
          "type":"group",
          "visible":true,
          "x":0,
