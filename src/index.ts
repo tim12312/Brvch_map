@@ -39,7 +39,7 @@ WA.room.onEnterZone('clock', () => {
             className: "primary",
             callback: (popup) => {
                 WA.room.setProperty('audio', 'openWebsite', undefined);
-                WA.room.setProperty('audio', 'playAudio', "http://localhost:8000/example");
+                WA.room.setProperty('audio', 'playAudio', "http://c103-201.cloud.gwdg.de:8000/dancefloorStream");
             }
 
         },
