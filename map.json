@@ -34,6 +34,11 @@
          "opacity":1,
          "properties":[
                 {
+                 "name":"audioVolume",
+                 "type":"string",
+                 "value":"0.1"
+                }, 
+                {
                  "name":"jitsiRoom",
                  "type":"string",
                  "value":"ChillZone"
