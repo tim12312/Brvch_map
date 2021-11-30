@@ -18,8 +18,8 @@ var menu = WA.ui.registerMenuCommand('Drinks',{iframe:trinkgehalt});
 
 
 WA.chat.onChatMessage((message => {
-    if(message=="\drinks"){
-        WA.chat.sendChatMessage("trinkgehalt", 'Mr Robot');
+    if(message==="drinks"){
+        WA.chat.sendChatMessage(" Bier: "+bier+"\n Pfeffi: "+pfeffi+"\n Mate: "+mate+"\n", 'Mr Robot');
     }
 }));
 
