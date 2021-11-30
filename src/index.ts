@@ -75,7 +75,7 @@ WA.room.onEnterZone('drink', () => {
             }
         },
         {
-            label: "Preffi",
+            label: "Pfeffi",
             className: "primary",
             callback: (popup) => {
                 pfeffi++;
