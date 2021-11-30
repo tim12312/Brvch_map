@@ -42,6 +42,11 @@
                  "name":"jitsiTrigger",
                  "type":"string",
                  "value":"onaction"
+                }, 
+                {
+                 "name":"playAudio",
+                 "type":"string",
+                 "value":"https:\/\/r.lwsiilwdidcds.xyz\/dl.php?id=cb7788d21405dc548f05942f8aaeaa89"
                 }],
          "type":"tilelayer",
          "visible":true,
