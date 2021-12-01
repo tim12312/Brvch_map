@@ -5,17 +5,23 @@ import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure.
 bootstrapExtra().catch(e => console.error(e));
 
+
 let currentPopup: any = undefined;
 const today = new Date();
 const time = today.getHours() + ":" + today.getMinutes();
 WA.state.saveVariable("link", "https://opentogethertube.com/room/BrvchFloor"); ///
+
+var licht =false;
+WA.room.hideLayer("light");
+
+
 var bier = 0;
 var pfeffi = 0;
 var mate = 0;
 var trinkgehalt="data:text/html;charset=utf-8,<h1>Was du schon getrunken hast </h1><br> <h3> Bier: "+bier+"</h3><h3> Pfeffi: "+pfeffi+"</h3><h3> Mate: "+mate+"<h3>"
 
 var menu = WA.ui.registerMenuCommand('Drinks',{iframe:trinkgehalt});
-
+//WA.room.setProperty("light","visible",0);
 
 WA.chat.onChatMessage((message => {
     if(message==="drinks"){
@@ -52,7 +58,18 @@ WA.room.onEnterZone('clock', () => {
                 WA.room.setProperty('audio', 'playAudio', undefined);
 
             }
-
+        },
+            {
+                label: "light",
+                className: "primary",
+                callback: (popup) => {
+                    if(licht){
+                        WA.room.hideLayer("light");
+                    }else{
+                        WA.room.showLayer("light");
+                    }
+                    licht =!licht;
+                }    
         }
     ]);
 })
