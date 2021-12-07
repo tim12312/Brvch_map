@@ -18,9 +18,18 @@ WA.room.hideLayer("light");
 var bier = 0;
 var pfeffi = 0;
 var mate = 0;
-var trinkgehalt="data:text/html;charset=utf-8,<h1>Was du schon getrunken hast </h1><br> <h3> Bier: "+bier+"</h3><h3> Pfeffi: "+pfeffi+"</h3><h3> Mate: "+mate+"<h3>"
+var pizza=0;
+var trinkgehalt="data:text/html;charset=utf-8,<h1>Was du schon getrunken hast </h1><br> <h3> Bier: "+bier+"</h3><h3> Pfeffi: "+pfeffi+"</h3><h3> Mate: "+mate+"</h3><h3> Pizza:"+pizza+"</h3>"
 
-var menu = WA.ui.registerMenuCommand('Drinks',{iframe:trinkgehalt});
+var menu = WA.ui.registerMenuCommand('Intus',{iframe:trinkgehalt});
+
+
+function trinkgehalt_update(){
+    trinkgehalt="data:text/html;charset=utf-8,<h1> Was du schon getrunken hast </h1><br> <h3> Bier: "+bier+"</h3><h3> Pfeffi: "+pfeffi+"</h3><h3> Mate: "+mate+"</h3><h3> Pizza:"+pizza+"</h3>"
+    menu.remove()
+    menu = WA.ui.registerMenuCommand('Intus',{iframe:trinkgehalt});
+}
+
 //WA.room.setProperty("light","visible",0);
 
 WA.chat.onChatMessage((message => {
@@ -85,9 +94,7 @@ WA.room.onEnterZone('drink', () => {
             className: "primary",
             callback: (popup) => {
                 bier++;
-                trinkgehalt="data:text/html;charset=utf-8,<h1>  Was du schon getrunken hast </h1><br> <h3> Bier: "+bier+"</h3><h3> Pfeffi: "+pfeffi+"</h3><h3> Mate: "+mate+"<h3>"
-                menu.remove()
-                menu = WA.ui.registerMenuCommand('Drinks',{iframe:trinkgehalt});
+                trinkgehalt_update()
                 closePopUp()
             }
         },
@@ -96,9 +103,7 @@ WA.room.onEnterZone('drink', () => {
             className: "primary",
             callback: (popup) => {
                 pfeffi++;
-                trinkgehalt="data:text/html;charset=utf-8,<h1>  Was du schon getrunken hast </h1><br> <h3> Bier: "+bier+"</h3><h3> Pfeffi: "+pfeffi+"</h3><h3> Mate: "+mate+"<h3>"
-                menu.remove()
-                menu = WA.ui.registerMenuCommand('Drinks',{iframe:trinkgehalt});
+                trinkgehalt_update()
                 closePopUp()
 
             }
@@ -109,9 +114,7 @@ WA.room.onEnterZone('drink', () => {
             className: "primary",
             callback: (popup) => {
                 mate++;
-                trinkgehalt="data:text/html;charset=utf-8,<h1> Was du schon getrunken hast </h1><br> <h3> Bier: "+bier+"</h3><h3> Pfeffi: "+pfeffi+"</h3><h3> Mate: "+mate+"<h3>"
-                menu.remove()
-                menu = WA.ui.registerMenuCommand('Drinks',{iframe:trinkgehalt});
+                trinkgehalt_update()
                 closePopUp()
 
             }
@@ -128,6 +131,29 @@ WA.room.onEnterZone('drink', () => {
 
 WA.room.onLeaveZone('drink', closePopUp)
 
+WA.room.onEnterZone('pizza', () => {
+    currentPopup = WA.ui.openPopup("pizzaMenu", "welche Pizza willst du?", [
+        {
+            label: "mit Knoblauch",
+            className: "primary",
+            callback: (popup) => {
+                pizza++;
+                trinkgehalt_update()
+                closePopUp()
+            }
+        },
+        {
+            label: "mit Annanas",
+            className: "primary",
+            callback: (popup) => {
+                WA.nav.goToRoom("hell.json")
+
+            }
+
+        }
+    ]);
+})
+WA.room.onLeaveZone('pizza', closePopUp)
 
 
 
